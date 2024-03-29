@@ -1,39 +1,34 @@
 package com.getir.patika.foodcouriers
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager2: ViewPager2
     private lateinit var pagerAdapter: PagerAdapter
+    private lateinit var mapView: MapView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_account)
-        tabLayout = findViewById(R.id.tab_account)
-        viewPager2 = findViewById(R.id.viewpager_account)
-        pagerAdapter = PagerAdapter(supportFragmentManager,lifecycle).apply {
-            addFragment(CreateAccountFragment())
-            addFragment(LoginAccountFragment())
-        }
-        viewPager2.adapter = pagerAdapter
+        setContentView(R.layout.activity_map)
+        mapView = findViewById(R.id.mapView)
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
 
-        TabLayoutMediator(tabLayout,viewPager2){ tab, position ->
-             when(position) {
-                 0 -> {
-                     tab.text = "Create Account"
-                 }
-                 1 -> {
-                     tab.text = "Login Account"
-                 }
-             }
+    }
 
-        }.attach()
+    override fun onMapReady(googleMap: GoogleMap) {
+        // Set current location
+        googleMap.isMyLocationEnabled = true
+        googleMap.uiSettings.isMyLocationButtonEnabled = true
 
     }
 }
