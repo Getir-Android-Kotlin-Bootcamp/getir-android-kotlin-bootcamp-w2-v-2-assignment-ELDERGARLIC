@@ -15,7 +15,8 @@
 
 ## Ekran Görüntüleri
 
-![Map Ekranı](map.jpg)
+![Map Ekranı](map.jpg) <img width="307" alt="image" src="https://github.com/Getir-Android-Kotlin-Bootcamp/getir-android-kotlin-bootcamp-w2-v-2-assignment-ELDERGARLIC/assets/52277462/6c305ea7-7de1-4da9-a39d-163426e8e78b">
+
 
 ### Yapılacaklar
 
